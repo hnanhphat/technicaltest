@@ -24,7 +24,7 @@ const createUser = (data) => async (dispatch) => {
       type: types.CREATE_NEW_SUCCESS,
       payload: { data: res, status: "Create user" },
     });
-    toast.success(res.data.status);
+    toast.success("Create " + res.data.status);
   } catch (error) {
     dispatch({ type: types.CREATE_NEW_FAILURE, payload: error.error });
     toast.error(error.error);
@@ -39,7 +39,7 @@ const deleteUser = (id) => async (dispatch) => {
       type: types.DELETE_SUCCESS,
       payload: { data: res, status: "Delete user" },
     });
-    toast.success(res.data.status);
+    toast.success("Delete " + res.data.status);
   } catch (error) {
     dispatch({ type: types.DELETE_FAILURE, payload: error.message });
     toast.error(error.error);
@@ -54,7 +54,7 @@ const updateUser = (data, id) => async (dispatch) => {
       type: types.UPDATE_SUCCESS,
       payload: { data: res, status: "Update user" },
     });
-    toast.success(res.data.status);
+    toast.success("Update " + res.data.status);
   } catch (error) {
     dispatch({ type: types.UPDATE_FAILURE, payload: error.message });
     toast.error(error.error);

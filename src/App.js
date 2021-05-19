@@ -18,10 +18,11 @@ function App() {
   const users = useSelector((state) => state.user.users.data);
   const status = useSelector((state) => state.user.status);
   const [leadModal, setLeadModal] = useState(false);
+  const [userID, setUserID] = useState("");
+
   const [updateModal, setUpdateModal] = useState(false);
-  const [updateID, setUpdateID] = useState("");
   const [deleteModal, setDeleteModal] = useState(false);
-  const [deleteID, setDeleteID] = useState("");
+
   const [formInput, setFormInput] = useState({
     first_name: "",
     last_name: "",
@@ -31,6 +32,14 @@ function App() {
     location_string: "",
   });
   const [formUpdateInput, setFormUpdateInput] = useState({ communication: "" });
+  // const [formInputAll, setFormInputAll] = useState({
+  //   first_name: "",
+  //   last_name: "",
+  //   email: "",
+  //   mobile: "",
+  //   location_type: "City",
+  //   location_string: "",
+  // });
 
   const handleChange = (e) => {
     setFormInput({ ...formInput, [e.target.name]: e.target.value });
@@ -239,7 +248,7 @@ function App() {
                   <div className="btns">
                     <button
                       onClick={() => {
-                        setUpdateID(user._id);
+                        setUserID(user._id);
                         setUpdateModal(true);
                       }}
                     >
@@ -247,7 +256,7 @@ function App() {
                     </button>
                     <button
                       onClick={() => {
-                        setDeleteID(user._id);
+                        setUserID(user._id);
                         setDeleteModal(true);
                       }}
                     >
@@ -262,7 +271,7 @@ function App() {
               <Modal.Title>Add Lead</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Form onSubmit={handleSubmit}>
+              <Form>
                 <Form.Group>
                   <Form.Label>First Name</Form.Label>
                   <Form.Control
@@ -355,7 +364,7 @@ function App() {
             </Modal.Body>
             <Modal.Footer>
               <button
-                onClick={() => handleUpdate(updateID)}
+                onClick={() => handleUpdate(userID)}
                 className="c-btn c-btn--red"
               >
                 Save
@@ -371,7 +380,7 @@ function App() {
             </Modal.Header>
             <Modal.Footer>
               <button
-                onClick={() => handleDelete(deleteID)}
+                onClick={() => handleDelete(userID)}
                 className="c-btn c-btn--red"
               >
                 Delete
