@@ -32,14 +32,6 @@ function App() {
     location_string: "",
   });
   const [formUpdateInput, setFormUpdateInput] = useState({ communication: "" });
-  // const [formInputAll, setFormInputAll] = useState({
-  //   first_name: "",
-  //   last_name: "",
-  //   email: "",
-  //   mobile: "",
-  //   location_type: "City",
-  //   location_string: "",
-  // });
 
   const handleChange = (e) => {
     setFormInput({ ...formInput, [e.target.name]: e.target.value });
@@ -250,6 +242,10 @@ function App() {
                       onClick={() => {
                         setUserID(user._id);
                         setUpdateModal(true);
+                        setFormUpdateInput({
+                          ...formUpdateInput,
+                          communication: user.communication,
+                        });
                       }}
                     >
                       Mark Update
@@ -357,6 +353,7 @@ function App() {
                     type="text"
                     name="communication"
                     placeholder="Communication"
+                    value={formUpdateInput.communication}
                     onChange={handleUpdateChange}
                   />
                 </Form.Group>
