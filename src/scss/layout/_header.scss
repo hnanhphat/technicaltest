@@ -1,0 +1,24 @@
+.header {
+  box-shadow: 0 2px 4px 0 rgba($color: $black, $alpha: 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 15px;
+  margin-bottom: 30px;
+  &__left {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+  }
+  &__right {
+    button {
+      background: $red;
+      border-radius: 6px;
+      color: $white;
+      width: 120px;
+      height: 30px;
+    }
+  }
+}
